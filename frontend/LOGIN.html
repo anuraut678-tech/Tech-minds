@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIF Safety - Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #eef9f6;
+        }
+
+        header {
+            height: 75px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: #07864e;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .logo h2 {
+            color: #07864e;
+            font-size: 21px;
+        }
+
+        .logo p {
+            font-size: 11px;
+            color: #444;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #07864e;
+        }
+
+        .login-top {
+            background: #07864e;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-area {
+            min-height: calc(100vh - 141px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            width: 410px;
+            background: white;
+            padding: 40px;
+            border-radius: 14px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .shield {
+            width: 65px;
+            height: 65px;
+            background: #e7f7ef;
+            color: #07864e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 32px;
+        }
+
+        .login-card h1 {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #66736e;
+            margin: 8px 0 30px;
+            font-size: 14px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-top: 7px;
+            margin-bottom: 18px;
+            border: 1px solid #ccd8d4;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #07864e;
+        }
+
+        .password {
+            position: relative;
+        }
+
+        .password span {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            cursor: pointer;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .options a {
+            color: #07864e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .remember {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .remember input {
+            width: auto;
+            margin: 0;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 7px;
+            background: #07864e;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #066b40;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            background: #ddd;
+            flex: 1;
+        }
+
+        .google-button {
+            width: 100%;
+            padding: 13px;
+            background: white;
+            border: 1px solid #ccd8d4;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .register a {
+            color: #07864e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            height: 66px;
+            background: #006c4a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        @media(max-width: 800px) {
+
+            header {
+                padding: 15px;
+                height: auto;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .login-top {
+                display: none;
+            }
+        }
+
+        @media(max-width: 500px) {
+
+            .login-card {
+                width: 90%;
+                padding: 25px;
+            }
+
+            .login-area {
+                padding: 30px 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡
+        </div>
+
+        <div>
+            <h2>SIF Safety</h2>
+            <p>Safe Today, Secure Tomorrow</p>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="report.html">Report Near-Miss</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="about.html">About Us</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <a href="login.html" class="login-top">
+        ♙ Login
+    </a>
+
+</header>
+
+
+<section class="login-area">
+
+    <div class="login-card">
+
+        <div class="shield">
+            🛡
+        </div>
+
+        <h1>
+            Welcome Back
+        </h1>
+
+        <p class="subtitle">
+            Login to your SIF Safety account
+        </p>
+
+
+        <form action="php/login.php" method="POST">
+
+            <label>
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <div class="password">
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <span onclick="showPassword()">
+                    👁
+                </span>
+
+            </div>
+
+
+            <div class="options">
+
+                <label class="remember">
+
+                    <input type="checkbox">
+
+                    Remember me
+
+                </label>
+
+                <a href="#">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <button class="login-button" type="submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <div class="divider">
+            OR
+        </div>
+
+
+        <button
+            class="google-button"
+            onclick="googleLogin()"
+        >
+            🔵 &nbsp; Continue with Google
+        </button>
+
+
+        <div class="register">
+
+            Don't have an account?
+
+            <a href="register.html">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 SIF Safety. All rights reserved.
+
+</footer>
+
+
+<script>
+
+function showPassword() {
+
+    let password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+}
+
+function googleLogin() {
+
+    alert("Google login will be connected with the backend.");
+
+}
+
+</script>
+
+</body>
+</html>

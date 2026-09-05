@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | SIF Safety</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2faf7;
+            color: #101828;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            height: 74px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            border-bottom: 1px solid #dce7e3;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 45px;
+            background: #087d4d;
+            color: white;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+
+            box-shadow: 0 0 15px rgba(8, 125, 77, 0.25);
+        }
+
+        .logo-text h2 {
+            color: #087d4d;
+            font-size: 22px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: #333;
+            margin-top: 3px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 14px;
+
+            padding: 11px 15px;
+
+            border-radius: 7px;
+
+            transition: all 0.3s ease;
+        }
+
+        /* HOVER GLOW */
+
+        nav a:hover {
+            color: #07864e;
+            background: #e8f8f1;
+
+            box-shadow:
+                0 0 8px rgba(7, 134, 78, 0.20),
+                0 0 18px rgba(7, 134, 78, 0.15);
+
+            transform: translateY(-1px);
+        }
+
+        /* ACTIVE TAB GLOW */
+
+        nav a.active {
+            color: #07864e;
+
+            background: #e8f8f1;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 0 8px rgba(7, 134, 78, 0.30),
+                0 0 20px rgba(7, 134, 78, 0.22);
+
+            border-bottom: 3px solid #07864e;
+        }
+
+        .login {
+            background: #087d4d;
+            color: white;
+            padding: 11px 19px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .login:hover {
+            background: #066b40;
+
+            box-shadow:
+                0 0 10px rgba(8, 125, 77, 0.40),
+                0 0 20px rgba(8, 125, 77, 0.25);
+        }
+
+        /* ================= HERO ================= */
+
+        .about-hero {
+            text-align: center;
+
+            padding: 65px 20px 55px;
+
+            background: #eaf8f3;
+
+            border-bottom: 1px solid #d8ebe4;
+        }
+
+        .small-title {
+            color: #07864e;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+        }
+
+        .about-hero h1 {
+            font-size: 42px;
+
+            margin: 12px 0;
+        }
+
+        .about-hero h1 span {
+            color: #07864e;
+        }
+
+        .about-hero p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #5d6a65;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 55px 25px;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 35px;
+
+            align-items: center;
+
+            margin-bottom: 55px;
+        }
+
+        .about-text h2 {
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+        .about-text h2 span {
+            color: #07864e;
+        }
+
+        .about-text p {
+            color: #5d6a65;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 14px;
+        }
+
+        /* ================= VISUAL ================= */
+
+        .about-visual {
+            background: white;
+
+            border: 1px solid #dce7e3;
+
+            border-radius: 12px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            box-shadow: 0 5px 20px rgba(0, 80, 50, 0.06);
+        }
+
+        .big-shield {
+            width: 130px;
+            height: 130px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: #e5f7ee;
+
+            border: 10px solid #c9eddb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 65px;
+
+            box-shadow:
+                0 0 20px rgba(8, 125, 77, 0.15);
+        }
+
+        .about-visual h3 {
+            color: #087d4d;
+
+            margin-top: 20px;
+
+            font-size: 20px;
+        }
+
+        .about-visual p {
+            color: #66736e;
+
+            font-size: 12px;
+
+            margin-top: 7px;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            font-size: 27px;
+
+            margin-bottom: 7px;
+        }
+
+        .section-title p {
+            color: #68746f;
+
+            font-size: 13px;
+        }
+
+        /* ================= MISSION ================= */
+
+        .mission-cards {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 55px;
+        }
+
+        .mission-card {
+            background: white;
+
+            border: 1px solid #dce7e3;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 0 12px rgba(7, 134, 78, 0.15),
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .mission-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #e8f7f0;
+
+            color: #087d4d;
+
+            font-size: 25px;
+        }
+
+        .mission-card h3 {
+            margin-top: 15px;
+
+            font-size: 17px;
+        }
+
+        .mission-card p {
+            color: #68746f;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin-top: 8px;
+        }
+
+        /* ================= PROCESS ================= */
+
+        .process {
+            background: white;
+
+            border: 1px solid #dce7e3;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            margin-bottom: 55px;
+        }
+
+        .process-items {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 10px;
+        }
+
+        .process-item {
+            text-align: center;
+
+            padding: 15px 8px;
+        }
+
+        .process-number {
+            width: 42px;
+            height: 42px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: #087d4d;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 0 12px rgba(8, 125, 77, 0.25);
+        }
+
+        .process-item h3 {
+            font-size: 13px;
+
+            margin-top: 12px;
+        }
+
+        .process-item p {
+            font-size: 10px;
+
+            color: #69756f;
+
+            line-height: 1.5;
+
+            margin-top: 5px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+
+            margin-bottom: 55px;
+        }
+
+        .feature {
+            background: white;
+
+            border: 1px solid #dce7e3;
+
+            border-radius: 9px;
+
+            padding: 20px;
+
+            display: flex;
+
+            gap: 15px;
+
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 0 12px rgba(7, 134, 78, 0.15);
+        }
+
+        .feature-icon {
+            min-width: 45px;
+
+            height: 45px;
+
+            background: #edf8f3;
+
+            color: #087d4d;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+        .feature h3 {
+            font-size: 14px;
+        }
+
+        .feature p {
+            color: #68746f;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            margin-top: 5px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            background: #087d4d;
+
+            color: white;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            box-shadow:
+                0 8px 30px rgba(8, 125, 77, 0.15);
+        }
+
+        .cta h2 {
+            font-size: 27px;
+
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            font-size: 13px;
+
+            margin-bottom: 22px;
+
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            background: white;
+
+            color: #087d4d;
+
+            text-decoration: none;
+
+            padding: 13px 22px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #006c4a;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 15px;
+
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 900px) {
+
+            header {
+                height: auto;
+
+                padding: 15px;
+
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+
+            nav {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 8px;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .process-items {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .about-hero h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                padding: 35px 15px;
+            }
+
+            .process-items {
+                grid-template-columns: 1fr;
+            }
+
+            .login {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡
+        </div>
+
+        <div class="logo-text">
+
+            <h2>
+                SIF Safety
+            </h2>
+
+            <p>
+                Safe Today, Secure Tomorrow
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="report.html">
+            Report Near-Miss
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="about.html" class="active">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <a href="login.html" class="login">
+        ♙ Login
+    </a>
+
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="about-hero">
+
+    <div class="small-title">
+        ABOUT SIF SAFETY
+    </div>
+
+    <h1>
+        Building a <span>Safer</span> Workplace
+    </h1>
+
+    <p>
+        SIF Safety is a workplace safety platform designed
+        to help organizations identify hazards, report
+        near-misses, analyze risks and prevent serious
+        incidents using AI-powered safety analysis.
+    </p>
+
+</section>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- ABOUT -->
+
+    <div class="about-grid">
+
+
+        <div class="about-text">
+
+            <h2>
+                What is <span>SIF Safety?</span>
+            </h2>
+
+            <p>
+                SIF Safety stands for Serious Injury and
+                Fatality prevention. Our platform focuses
+                on identifying workplace conditions that
+                could potentially lead to serious injuries
+                or fatal incidents.
+            </p>
+
+            <p>
+                Employees can report near-misses and unsafe
+                conditions through a simple digital platform.
+                The system can then use AI analysis to
+                identify important safety information.
+            </p>
+
+            <p>
+                Our goal is simple: identify risks early,
+                understand why they happen and take
+                preventive action before an incident occurs.
+            </p>
+
+        </div>
+
+
+        <div class="about-visual">
+
+            <div class="big-shield">
+                🛡
+            </div>
+
+            <h3>
+                Safe Today, Secure Tomorrow
+            </h3>
+
+            <p>
+                Prevention starts with identifying risks.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= MISSION ================= -->
+
+    <div class="section-title">
+
+        <h2>
+            Our Mission
+        </h2>
+
+        <p>
+            Making workplace safety proactive,
+            intelligent and accessible.
+        </p>
+
+    </div>
+
+
+    <div class="mission-cards">
+
+
+        <div class="mission-card">
+
+            <div class="mission-icon">
+                ⚠
+            </div>
+
+            <h3>
+                Identify Hazards
+            </h3>
+
+            <p>
+                Help organizations discover unsafe
+                conditions before they become incidents.
+            </p>
+
+        </div>
+
+
+        <div class="mission-card">
+
+            <div class="mission-icon">
+                ✦
+            </div>
+
+            <h3>
+                AI-Powered Analysis
+            </h3>
+
+            <p>
+                Use AI to analyze safety reports and
+                identify important risk information.
+            </p>
+
+        </div>
+
+
+        <div class="mission-card">
+
+            <div class="mission-icon">
+                ✓
+            </div>
+
+            <h3>
+                Prevent Incidents
+            </h3>
+
+            <p>
+                Turn safety insights into practical
+                preventive actions.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <div class="section-title">
+
+        <h2>
+            How SIF Safety Works
+        </h2>
+
+        <p>
+            A simple process for turning reports into
+            safety improvements.
+        </p>
+
+    </div>
+
+
+    <div class="process">
+
+        <div class="process-items">
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    1
+                </div>
+
+                <h3>
+                    Report
+                </h3>
+
+                <p>
+                    Submit a near-miss or safety report.
+                </p>
+
+            </div>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    2
+                </div>
+
+                <h3>
+                    AI Analysis
+                </h3>
+
+                <p>
+                    AI analyzes the submitted information.
+                </p>
+
+            </div>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    3
+                </div>
+
+                <h3>
+                    Risk Analysis
+                </h3>
+
+                <p>
+                    Identify hazards and potential risks.
+                </p>
+
+            </div>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    4
+                </div>
+
+                <h3>
+                    Prioritize
+                </h3>
+
+                <p>
+                    Focus on the most important risks.
+                </p>
+
+            </div>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    5
+                </div>
+
+                <h3>
+                    Prevent
+                </h3>
+
+                <p>
+                    Take preventive actions.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <div class="section-title">
+
+        <h2>
+            What We Provide
+        </h2>
+
+        <p>
+            Key capabilities of the SIF Safety platform.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📝
+            </div>
+
+            <div>
+
+                <h3>
+                    Near-Miss Reporting
+                </h3>
+
+                <p>
+                    Easily submit workplace safety
+                    observations and near-miss events.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <h3>
+                    Gemini AI Integration
+                </h3>
+
+                <p>
+                    AI-assisted analysis helps understand
+                    hazards and possible causes.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h3>
+                    Safety Dashboard
+                </h3>
+
+                <p>
+                    Monitor reports, risks, actions and
+                    workplace safety performance.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🛡
+            </div>
+
+            <div>
+
+                <h3>
+                    SIF Prevention
+                </h3>
+
+                <p>
+                    Focus on hazards that have the potential
+                    to cause serious injury or fatality.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= CTA ================= -->
+
+    <div class="cta">
+
+        <h2>
+            Help Make Your Workplace Safer
+        </h2>
+
+        <p>
+            Report a near-miss today and help prevent
+            tomorrow's incident.
+        </p>
+
+        <a href="report.html" class="cta-button">
+            Report a Near-Miss
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 SIF Safety. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>

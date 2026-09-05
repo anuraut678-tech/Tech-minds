@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Near-Miss | SIF Safety</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2faf7;
+            color: #101828;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            height: 74px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            border-bottom: 1px solid #dce7e3;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 45px;
+            background: #087d4d;
+            color: white;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .logo-text h2 {
+            color: #087d4d;
+            font-size: 22px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: #333;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 14px;
+            padding: 27px 0;
+        }
+
+        nav a:hover {
+            color: #087d4d;
+        }
+
+        nav a.active {
+            color: #087d4d;
+            border-bottom: 3px solid #087d4d;
+        }
+
+        .login {
+            background: #087d4d;
+            color: white;
+            padding: 11px 19px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 45px 25px 60px;
+        }
+
+        .page-heading {
+            margin-bottom: 30px;
+        }
+
+        .small-title {
+            color: #07864e;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .page-heading h1 {
+            font-size: 38px;
+            margin: 8px 0;
+        }
+
+        .page-heading p {
+            color: #66736e;
+            font-size: 15px;
+            line-height: 1.5;
+            max-width: 700px;
+        }
+
+        /* ================= MAIN GRID ================= */
+
+        .content {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 25px;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-card {
+            background: white;
+            border: 1px solid #dce7e3;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .form-card h2 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .form-description {
+            color: #69756f;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #d33;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd8d3;
+            border-radius: 7px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #07864e;
+            box-shadow: 0 0 0 3px #e6f7ee;
+        }
+
+        .two-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .submit-btn {
+            flex: 1;
+            border: none;
+            background: #07864e;
+            color: white;
+            padding: 14px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #066b40;
+        }
+
+        .clear-btn {
+            border: 1px solid #ccd8d4;
+            background: white;
+            color: #333;
+            padding: 14px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ================= GEMINI ================= */
+
+        .ai-card {
+            background: white;
+            border: 1px solid #dce7e3;
+            border-radius: 10px;
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .ai-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #edf3ff;
+            color: #3869bd;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .ai-header h2 {
+            font-size: 19px;
+        }
+
+        .ai-header p {
+            color: #6c7772;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .ai-info {
+            background: #f3f8ff;
+            border: 1px solid #d8e5f8;
+            border-radius: 7px;
+            padding: 15px;
+            margin-bottom: 18px;
+        }
+
+        .ai-info p {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #42546d;
+        }
+
+        .analyze-btn {
+            width: 100%;
+            border: none;
+            background: #3869bd;
+            color: white;
+            padding: 14px;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .analyze-btn:hover {
+            background: #28549e;
+        }
+
+        .ai-result {
+            display: none;
+            margin-top: 20px;
+            background: #f8fbff;
+            border: 1px solid #cadbf5;
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .ai-result h3 {
+            color: #28549e;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .result-item {
+            margin-bottom: 12px;
+        }
+
+        .result-item strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .result-item p {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #56635e;
+        }
+
+        /* ================= SAFETY INFO ================= */
+
+        .safety-box {
+            margin-top: 25px;
+            background: #edf9f4;
+            border: 1px solid #cce9da;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .safety-box h3 {
+            color: #087d4d;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .safety-box ul {
+            padding-left: 20px;
+        }
+
+        .safety-box li {
+            font-size: 12px;
+            margin-bottom: 7px;
+            color: #46544e;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #006c4a;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            font-size: 12px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 900px) {
+
+            header {
+                height: auto;
+                padding: 15px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            nav a {
+                padding: 12px 0;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .page {
+                padding: 30px 15px;
+            }
+
+            .page-heading h1 {
+                font-size: 30px;
+            }
+
+            .two-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .login {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡
+        </div>
+
+        <div class="logo-text">
+
+            <h2>SIF Safety</h2>
+
+            <p>
+                Safe Today, Secure Tomorrow
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="report.html" class="active">
+            Report Near-Miss
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <a href="login.html" class="login">
+        ♙ Login
+    </a>
+
+</header>
+
+
+<!-- ================= PAGE ================= -->
+
+<div class="page">
+
+
+    <div class="page-heading">
+
+        <div class="small-title">
+            SAFETY REPORT
+        </div>
+
+        <h1>
+            Report a Near-Miss
+        </h1>
+
+        <p>
+            Report unsafe situations and near-miss events.
+            Our AI-powered system will help identify hazards,
+            analyze risks and recommend preventive actions.
+        </p>
+
+    </div>
+
+
+    <div class="content">
+
+
+        <!-- ================= FORM ================= -->
+
+        <div>
+
+            <div class="form-card">
+
+                <h2>
+                    Near-Miss Information
+                </h2>
+
+                <p class="form-description">
+                    Please provide accurate information about the event.
+                </p>
+
+
+                <form id="reportForm">
+
+
+                    <!-- TITLE -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Incident Title
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Example: Forklift nearly hit a worker"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- LOCATION + DATE -->
+
+                    <div class="two-inputs">
+
+                        <div class="form-group">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                placeholder="Example: Warehouse A"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Date & Time
+                            </label>
+
+                            <input
+                                type="datetime-local"
+                                id="date"
+                                name="date"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SEVERITY -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Severity
+                            <span class="required">*</span>
+                        </label>
+
+                        <select id="severity" name="severity">
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                            <option value="Critical">
+                                Critical
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ACTIVITY -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Activity Being Performed
+                        </label>
+
+                        <input
+                            type="text"
+                            id="activity"
+                            name="activity"
+                            placeholder="Example: Material handling"
+                        >
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group">
+
+                        <label>
+                            What Happened?
+                            <span class="required">*</span>
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Describe what happened, the hazard you noticed, and what could have caused an injury..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- ACTION -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Immediate Action Taken
+                        </label>
+
+                        <textarea
+                            id="action"
+                            name="action"
+                            placeholder="Describe what was done immediately after the near-miss..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="buttons">
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                        >
+                            Submit Near-Miss Report
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="clear-btn"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- SAFETY INFORMATION -->
+
+            <div class="safety-box">
+
+                <h3>
+                    🛡 Why Report Near-Misses?
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Near-misses help identify hazards before someone gets injured.
+                    </li>
+
+                    <li>
+                        Your report can help prevent similar incidents.
+                    </li>
+
+                    <li>
+                        Gemini AI can help analyze the report and identify potential risks.
+                    </li>
+
+                    <li>
+                        Always follow your organization's safety procedures.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= GEMINI ================= -->
+
+        <div class="ai-card">
+
+            <div class="ai-header">
+
+                <div class="ai-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h2>
+                        Gemini AI Analysis
+                    </h2>
+
+                    <p>
+                        AI-powered safety analysis
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-info">
+
+                <p>
+                    After entering your report, Gemini AI can analyze
+                    the information and identify hazards, risk levels,
+                    possible root causes and preventive actions.
+                </p>
+
+            </div>
+
+
+            <button
+                class="analyze-btn"
+                id="analyzeButton"
+                type="button"
+            >
+                ✦ Analyze Report with Gemini
+            </button>
+
+
+            <!-- AI RESULT -->
+
+            <div
+                class="ai-result"
+                id="aiResult"
+            >
+
+                <h3>
+                    Gemini Safety Analysis
+                </h3>
+
+
+                <div class="result-item">
+
+                    <strong>
+                        Hazard
+                    </strong>
+
+                    <p id="hazardResult">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="result-item">
+
+                    <strong>
+                        Risk Level
+                    </strong>
+
+                    <p id="riskResult">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="result-item">
+
+                    <strong>
+                        Possible Root Cause
+                    </strong>
+
+                    <p id="rootResult">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="result-item">
+
+                    <strong>
+                        SIF Potential
+                    </strong>
+
+                    <p id="sifResult">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="result-item">
+
+                    <strong>
+                        Recommended Intervention
+                    </strong>
+
+                    <p id="interventionResult">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="result-item">
+
+                    <strong>
+                        Preventive Actions
+                    </strong>
+
+                    <p id="preventionResult">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 SIF Safety. All rights reserved.
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    const reportForm =
+        document.getElementById("reportForm");
+
+    const analyzeButton =
+        document.getElementById("analyzeButton");
+
+    const aiResult =
+        document.getElementById("aiResult");
+
+
+    reportForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Near-Miss report submitted successfully!"
+        );
+
+    });
+
+
+    analyzeButton.addEventListener("click", async function() {
+
+
+        const title =
+            document.getElementById("title").value.trim();
+
+        const description =
+            document.getElementById("description").value.trim();
+
+        const location =
+            document.getElementById("location").value.trim();
+
+        const severity =
+            document.getElementById("severity").value;
+
+
+        if (title === "" || description === "") {
+
+            alert(
+                "Please enter Incident Title and What Happened first."
+            );
+
+            return;
+
+        }
+
+
+        analyzeButton.innerHTML =
+            "⏳ Gemini is analyzing...";
+
+        analyzeButton.disabled = true;
+
+
+        try {
+
+
+            const response = await fetch(
+                "php/gemini.php",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        title: title,
+
+                        description:
+                            description,
+
+                        location:
+                            location,
+
+                        severity:
+                            severity
+
+                    })
+
+                }
+            );
+
+
+            const data =
+                await response.json();
+
+
+            if (data.analysis) {
+
+                aiResult.style.display =
+                    "block";
+
+                document.getElementById(
+                    "hazardResult"
+                ).innerText =
+                    data.analysis;
+
+                document.getElementById(
+                    "riskResult"
+                ).innerText =
+                    "See Gemini analysis above.";
+
+                document.getElementById(
+                    "rootResult"
+                ).innerText =
+                    "See Gemini analysis above.";
+
+                document.getElementById(
+                    "sifResult"
+                ).innerText =
+                    "See Gemini analysis above.";
+
+                document.getElementById(
+                    "interventionResult"
+                ).innerText =
+                    "See Gemini analysis above.";
+
+                document.getElementById(
+                    "preventionResult"
+                ).innerText =
+                    "See Gemini analysis above.";
+
+            } else {
+
+                alert(
+                    data.error ||
+                    "Gemini analysis failed."
+                );
+
+            }
+
+
+        } catch (error) {
+
+            alert(
+                "Could not connect to the Gemini server."
+            );
+
+        }
+
+
+        analyzeButton.innerHTML =
+            "✦ Analyze Report with Gemini";
+
+        analyzeButton.disabled = false;
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

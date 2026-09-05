@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | SIF Safety</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4faf7;
+            color: #10231c;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 76px;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            border-bottom: 1px solid #dce9e4;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 43px;
+            height: 43px;
+
+            background: #087d4d;
+            color: white;
+
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+
+            box-shadow: 0 0 15px rgba(8, 125, 77, 0.15);
+        }
+
+        .logo h2 {
+            color: #087d4d;
+            font-size: 21px;
+        }
+
+        .logo p {
+            color: #777;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: #27332e;
+
+            font-size: 13px;
+            font-weight: 500;
+
+            padding: 10px 14px;
+
+            border-radius: 7px;
+
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            color: #087d4d;
+
+            background: #edf8f3;
+
+            box-shadow:
+                0 0 8px rgba(8, 125, 77, 0.18),
+                0 0 18px rgba(8, 125, 77, 0.08);
+
+            transform: translateY(-1px);
+        }
+
+        /* ACTIVE CONTACT TAB */
+
+        nav a.active {
+            color: #087d4d;
+
+            background: #e8f7f0;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 0 8px rgba(8, 125, 77, 0.25),
+                0 0 20px rgba(8, 125, 77, 0.12);
+        }
+
+        nav a.active::after {
+            content: "";
+
+            display: block;
+
+            height: 2px;
+
+            background: #087d4d;
+
+            border-radius: 5px;
+
+            margin-top: 4px;
+        }
+
+        /* LOGIN */
+
+        .login-btn {
+            text-decoration: none;
+
+            background: #087d4d;
+            color: white;
+
+            padding: 11px 18px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-left: 10px;
+
+            transition: 0.25s;
+        }
+
+        .login-btn:hover {
+            background: #066b40;
+
+            box-shadow:
+                0 0 10px rgba(8, 125, 77, 0.3),
+                0 0 20px rgba(8, 125, 77, 0.15);
+
+            transform: translateY(-1px);
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 60px 25px;
+        }
+
+        .heading {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .heading span {
+            color: #087d4d;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+
+            margin-top: 10px;
+
+            letter-spacing: -0.7px;
+        }
+
+        .heading p {
+            color: #68756f;
+
+            font-size: 13px;
+
+            margin-top: 10px;
+        }
+
+        /* ================= CONTACT GRID ================= */
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.4fr;
+
+            gap: 25px;
+        }
+
+        /* ================= CONTACT INFO ================= */
+
+        .contact-info {
+            background: #087d4d;
+
+            color: white;
+
+            border-radius: 15px;
+
+            padding: 32px;
+
+            box-shadow:
+                0 15px 35px rgba(8, 125, 77, 0.15);
+        }
+
+        .contact-info h2 {
+            font-size: 24px;
+
+            margin-bottom: 12px;
+        }
+
+        .contact-info > p {
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            opacity: 0.9;
+
+            margin-bottom: 28px;
+        }
+
+        .info-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-top: 20px;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+
+            background: rgba(255,255,255,0.15);
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 17px;
+
+            flex-shrink: 0;
+        }
+
+        .info-item h3 {
+            font-size: 12px;
+        }
+
+        .info-item p {
+            font-size: 10px;
+
+            margin-top: 4px;
+
+            opacity: 0.8;
+        }
+
+        /* ================= FORM ================= */
+
+        .contact-form {
+            background: white;
+
+            border: 1px solid #dce9e4;
+
+            border-radius: 15px;
+
+            padding: 32px;
+
+            box-shadow:
+                0 12px 35px rgba(8, 125, 77, 0.07);
+        }
+
+        .contact-form h2 {
+            font-size: 21px;
+
+            margin-bottom: 25px;
+        }
+
+        .row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+            color: #27332e;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            border: 1px solid #ccdcd5;
+
+            border-radius: 7px;
+
+            padding: 13px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            transition: 0.25s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #087d4d;
+
+            box-shadow:
+                0 0 0 3px rgba(8, 125, 77, 0.08);
+        }
+
+        textarea {
+            height: 130px;
+
+            resize: vertical;
+        }
+
+        /* BUTTON */
+
+        .send-btn {
+            width: 100%;
+
+            border: none;
+
+            background: #087d4d;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .send-btn:hover {
+            background: #066b40;
+
+            box-shadow:
+                0 0 10px rgba(8, 125, 77, 0.3),
+                0 0 20px rgba(8, 125, 77, 0.12);
+
+            transform: translateY(-1px);
+        }
+
+        /* ================= FAQ ================= */
+
+        .faq-section {
+            margin-top: 65px;
+        }
+
+        .faq-title {
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+        .faq-title h2 {
+            font-size: 25px;
+        }
+
+        .faq-title p {
+            color: #6c7973;
+
+            font-size: 12px;
+
+            margin-top: 7px;
+        }
+
+        .faq-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .faq {
+            background: white;
+
+            border: 1px solid #dce9e4;
+
+            border-radius: 9px;
+
+            padding: 20px;
+
+            transition: 0.25s;
+        }
+
+        .faq:hover {
+            border-color: #b7d9ca;
+
+            box-shadow:
+                0 8px 25px rgba(8,125,77,0.07);
+        }
+
+        .faq h3 {
+            font-size: 13px;
+
+            color: #087d4d;
+        }
+
+        .faq p {
+            color: #68756f;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            margin-top: 7px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #075c40;
+
+            color: white;
+
+            padding: 30px 7%;
+
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .footer-logo h2 {
+            font-size: 18px;
+        }
+
+        .footer-logo p {
+            font-size: 10px;
+
+            opacity: 0.75;
+
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            opacity: 0.85;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.15);
+
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            font-size: 10px;
+
+            opacity: 0.7;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            header {
+                height: auto;
+
+                padding: 15px;
+
+                flex-wrap: wrap;
+            }
+
+            nav {
+                width: 100%;
+
+                order: 3;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                margin-top: 12px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .heading h1 {
+                font-size: 30px;
+            }
+
+            .footer-content {
+                display: block;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+
+                margin-top: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="index.html" class="logo">
+
+        <div class="logo-icon">
+            🛡
+        </div>
+
+        <div>
+
+            <h2>SIF Safety</h2>
+
+            <p>
+                Safe Today, Secure Tomorrow
+            </p>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="report.html">
+            Report Near-Miss
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html" class="active">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <a href="login.html" class="login-btn">
+        Login
+    </a>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <span>
+                GET IN TOUCH
+            </span>
+
+            <h1>
+                Contact SIF Safety
+            </h1>
+
+            <p>
+                Have a question, suggestion or need help?
+                We're here to support you.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <h2>
+                    Let's Talk
+                </h2>
+
+                <p>
+                    If you have questions about SIF Safety,
+                    near-miss reporting or our AI-powered
+                    safety analysis, contact our team.
+                </p>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ✉
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Email
+                        </h3>
+
+                        <p>
+                            support@sifsafety.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ☎
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Phone
+                        </h3>
+
+                        <p>
+                            +91 98765 43210
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ⌖
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Location
+                        </h3>
+
+                        <p>
+                            Mumbai, Maharashtra, India
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        🕐
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Working Hours
+                        </h3>
+
+                        <p>
+                            Monday - Friday | 9:00 AM - 6:00 PM
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-form">
+
+                <h2>
+                    Send us a Message
+                </h2>
+
+
+                <form action="contact.php" method="POST">
+
+
+                    <div class="row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            name="subject"
+                            placeholder="What is this about?"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Message
+                        </label>
+
+                        <textarea
+                            name="message"
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="send-btn"
+                    >
+                        Send Message
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= FAQ ================= -->
+
+        <section class="faq-section">
+
+
+            <div class="faq-title">
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+                <p>
+                    Quick answers about SIF Safety.
+                </p>
+
+            </div>
+
+
+            <div class="faq-grid">
+
+
+                <div class="faq">
+
+                    <h3>
+                        What is a near-miss?
+                    </h3>
+
+                    <p>
+                        A near-miss is an unsafe event that
+                        could have resulted in an injury or
+                        serious incident but did not.
+                    </p>
+
+                </div>
+
+
+                <div class="faq">
+
+                    <h3>
+                        Why should I report a near-miss?
+                    </h3>
+
+                    <p>
+                        Reporting helps identify hazards
+                        before they cause serious injuries
+                        or fatalities.
+                    </p>
+
+                </div>
+
+
+                <div class="faq">
+
+                    <h3>
+                        How does Gemini AI help?
+                    </h3>
+
+                    <p>
+                        Gemini AI can assist in analyzing
+                        reports, identifying possible risks
+                        and suggesting preventive actions.
+                    </p>
+
+                </div>
+
+
+                <div class="faq">
+
+                    <h3>
+                        Is my report important?
+                    </h3>
+
+                    <p>
+                        Yes. Every report provides valuable
+                        information that can help improve
+                        workplace safety.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div class="footer-logo">
+
+            <h2>
+                SIF Safety
+            </h2>
+
+            <p>
+                Safe Today, Secure Tomorrow
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="report.html">
+                Report
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 SIF Safety. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

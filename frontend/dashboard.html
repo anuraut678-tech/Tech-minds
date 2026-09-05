@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIF Safety - Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2faf7;
+            color: #101828;
+        }
+
+        /* NAVBAR */
+
+        header {
+            height: 74px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            border-bottom: 1px solid #dce7e3;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 45px;
+            background: #087d4d;
+            color: white;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .logo-text h2 {
+            color: #087d4d;
+            font-size: 22px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: #333;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 14px;
+            padding: 27px 0;
+        }
+
+        nav a:hover {
+            color: #087d4d;
+        }
+
+        nav a.active {
+            color: #087d4d;
+            border-bottom: 3px solid #087d4d;
+        }
+
+        .login {
+            background: #087d4d;
+            color: white;
+            padding: 11px 19px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* PAGE */
+
+        .dashboard-page {
+            max-width: 1250px;
+            margin: auto;
+            padding: 45px 25px 60px;
+        }
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+        }
+
+        .small-title {
+            color: #07864e;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+            margin: 8px 0;
+        }
+
+        .heading p {
+            color: #66736e;
+            font-size: 14px;
+        }
+
+        .new-report {
+            background: #07864e;
+            color: white;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* STATISTICS */
+
+        .statistics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #dce7e3;
+            border-radius: 10px;
+            padding: 22px;
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 21px;
+        }
+
+        .green {
+            background: #12a45f;
+        }
+
+        .blue {
+            background: #2878cc;
+        }
+
+        .red {
+            background: #e34b45;
+        }
+
+        .purple {
+            background: #7b48b7;
+        }
+
+        .stat-card h2 {
+            font-size: 30px;
+            margin-top: 18px;
+        }
+
+        .stat-card p {
+            font-size: 13px;
+            color: #53615b;
+            margin-top: 5px;
+        }
+
+        .increase {
+            color: #16824f;
+            font-size: 11px;
+            margin-top: 9px;
+            display: block;
+        }
+
+        .warning {
+            color: #d64a42;
+            font-size: 11px;
+            margin-top: 9px;
+            display: block;
+        }
+
+        /* CONTENT */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr;
+            gap: 22px;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid #dce7e3;
+            border-radius: 10px;
+            padding: 22px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-header h2 {
+            font-size: 19px;
+        }
+
+        .view-all {
+            color: #087d4d;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f1f7f5;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            color: #4c5a55;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #edf0ef;
+            font-size: 12px;
+        }
+
+        .badge {
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .low {
+            background: #e9f8ef;
+            color: #167346;
+        }
+
+        .medium {
+            background: #fff4d9;
+            color: #9b6810;
+        }
+
+        .high {
+            background: #ffe9e7;
+            color: #b43730;
+        }
+
+        .critical {
+            background: #ffdddd;
+            color: #a51f1f;
+        }
+
+        /* RISK */
+
+        .risk-item {
+            padding: 15px;
+            border: 1px solid #e1e7e4;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .risk-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .risk-title b {
+            font-size: 13px;
+        }
+
+        .risk-number {
+            color: #e04a43;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .progress {
+            height: 7px;
+            background: #e8eeeb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: #e34b45;
+        }
+
+        .risk-item p {
+            font-size: 11px;
+            color: #68746f;
+            margin-top: 7px;
+        }
+
+        /* SAFETY SCORE */
+
+        .score-card {
+            margin-top: 22px;
+            background: #edf9f4;
+            border: 1px solid #cce9da;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 10px auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #dff4e9;
+            border: 12px solid #12a45f;
+        }
+
+        .score-circle b {
+            font-size: 27px;
+            color: #087d4d;
+        }
+
+        .score-card h3 {
+            color: #087d4d;
+            font-size: 17px;
+        }
+
+        .score-card p {
+            color: #5f6d67;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* ACTIONS */
+
+        .actions {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .action-card {
+            background: white;
+            border: 1px solid #dce7e3;
+            border-radius: 9px;
+            padding: 20px;
+        }
+
+        .action-card-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #edf6ff;
+            color: #2878cc;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .action-card h3 {
+            font-size: 14px;
+        }
+
+        .action-card p {
+            font-size: 11px;
+            color: #68746f;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #006c4a;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+
+            header {
+                height: auto;
+                padding: 15px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            nav a {
+                padding: 12px 0;
+            }
+
+            .statistics {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .dashboard-page {
+                padding: 30px 15px;
+            }
+
+            .heading {
+                display: block;
+            }
+
+            .heading h1 {
+                font-size: 30px;
+            }
+
+            .new-report {
+                display: inline-block;
+                margin-top: 18px;
+            }
+
+            .statistics {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                min-width: 650px;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .login {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡
+        </div>
+
+        <div class="logo-text">
+
+            <h2>SIF Safety</h2>
+
+            <p>
+                Safe Today, Secure Tomorrow
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="report.html">
+            Report Near-Miss
+        </a>
+
+        <a href="dashboard.html" class="active">
+            Dashboard
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <a href="login.html" class="login">
+        ♙ Login
+    </a>
+
+</header>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<div class="dashboard-page">
+
+
+    <div class="heading">
+
+        <div>
+
+            <div class="small-title">
+                SAFETY MONITORING
+            </div>
+
+            <h1>
+                SIF Dashboard
+            </h1>
+
+            <p>
+                Monitor trends, recurring risks and workplace safety performance.
+            </p>
+
+        </div>
+
+
+        <a href="report.html" class="new-report">
+            + New Near-Miss Report
+        </a>
+
+    </div>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <div class="statistics">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    Total Near-Misses
+                </div>
+
+                <div class="stat-icon blue">
+                    📋
+                </div>
+
+            </div>
+
+            <h2>
+                248
+            </h2>
+
+            <p>
+                Reported incidents
+            </p>
+
+            <span class="increase">
+                ↑ 12% this month
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    High Risks
+                </div>
+
+                <div class="stat-icon red">
+                    ⚠
+                </div>
+
+            </div>
+
+            <h2>
+                32
+            </h2>
+
+            <p>
+                Require attention
+            </p>
+
+            <span class="warning">
+                8 require immediate action
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    Actions Completed
+                </div>
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+            </div>
+
+            <h2>
+                186
+            </h2>
+
+            <p>
+                Preventive actions
+            </p>
+
+            <span class="increase">
+                75% completion rate
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    Safety Score
+                </div>
+
+                <div class="stat-icon purple">
+                    ↗
+                </div>
+
+            </div>
+
+            <h2>
+                91%
+            </h2>
+
+            <p>
+                Overall safety performance
+            </p>
+
+            <span class="increase">
+                ↑ 5% improvement
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="content-grid">
+
+
+        <!-- RECENT REPORTS -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Recent Near-Miss Reports
+                </h2>
+
+                <a href="report.html" class="view-all">
+                    + Add Report
+                </a>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Incident
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Severity
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                #248
+                            </td>
+
+                            <td>
+                                Forklift Near-Miss
+                            </td>
+
+                            <td>
+                                Warehouse A
+                            </td>
+
+                            <td>
+                                <span class="badge high">
+                                    High
+                                </span>
+                            </td>
+
+                            <td>
+                                05 Sep 2026
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                #247
+                            </td>
+
+                            <td>
+                                Chemical Spill
+                            </td>
+
+                            <td>
+                                Plant 2
+                            </td>
+
+                            <td>
+                                <span class="badge critical">
+                                    Critical
+                                </span>
+                            </td>
+
+                            <td>
+                                04 Sep 2026
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                #246
+                            </td>
+
+                            <td>
+                                Slip Hazard
+                            </td>
+
+                            <td>
+                                Production Area
+                            </td>
+
+                            <td>
+                                <span class="badge medium">
+                                    Medium
+                                </span>
+                            </td>
+
+                            <td>
+                                03 Sep 2026
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                #245
+                            </td>
+
+                            <td>
+                                Missing Safety Guard
+                            </td>
+
+                            <td>
+                                Machine Area
+                            </td>
+
+                            <td>
+                                <span class="badge high">
+                                    High
+                                </span>
+                            </td>
+
+                            <td>
+                                02 Sep 2026
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                #244
+                            </td>
+
+                            <td>
+                                Improper PPE
+                            </td>
+
+                            <td>
+                                Workshop
+                            </td>
+
+                            <td>
+                                <span class="badge low">
+                                    Low
+                                </span>
+                            </td>
+
+                            <td>
+                                01 Sep 2026
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- RISK ANALYSIS -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Top Risk Areas
+                </h2>
+
+            </div>
+
+
+            <div class="risk-item">
+
+                <div class="risk-title">
+
+                    <b>
+                        Material Handling
+                    </b>
+
+                    <span class="risk-number">
+                        78%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:78%">
+                    </div>
+
+                </div>
+
+                <p>
+                    18 reported near-misses
+                </p>
+
+            </div>
+
+
+            <div class="risk-item">
+
+                <div class="risk-title">
+
+                    <b>
+                        Machinery
+                    </b>
+
+                    <span class="risk-number">
+                        62%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:62%">
+                    </div>
+
+                </div>
+
+                <p>
+                    14 reported near-misses
+                </p>
+
+            </div>
+
+
+            <div class="risk-item">
+
+                <div class="risk-title">
+
+                    <b>
+                        Chemical Handling
+                    </b>
+
+                    <span class="risk-number">
+                        48%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:48%">
+                    </div>
+
+                </div>
+
+                <p>
+                    9 reported near-misses
+                </p>
+
+            </div>
+
+
+            <div class="risk-item">
+
+                <div class="risk-title">
+
+                    <b>
+                        Working at Height
+                    </b>
+
+                    <span class="risk-number">
+                        35%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:35%">
+                    </div>
+
+                </div>
+
+                <p>
+                    6 reported near-misses
+                </p>
+
+            </div>
+
+
+            <!-- SCORE -->
+
+            <div class="score-card">
+
+                <div class="score-circle">
+
+                    <b>
+                        91%
+                    </b>
+
+                </div>
+
+                <h3>
+                    Excellent Safety Score
+                </h3>
+
+                <p>
+                    Your workplace safety performance
+                    improved by 5% this month.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACTION CARDS ================= -->
+
+    <div class="actions">
+
+
+        <div class="action-card">
+
+            <div class="action-card-icon">
+                ⚠
+            </div>
+
+            <h3>
+                Identify Hazards
+            </h3>
+
+            <p>
+                Use near-miss reports to identify
+                recurring workplace hazards.
+            </p>
+
+        </div>
+
+
+        <div class="action-card">
+
+            <div class="action-card-icon">
+                ✦
+            </div>
+
+            <h3>
+                Gemini AI Analysis
+            </h3>
+
+            <p>
+                Analyze reported incidents using
+                AI-powered safety analysis.
+            </p>
+
+        </div>
+
+
+        <div class="action-card">
+
+            <div class="action-card-icon">
+                ✓
+            </div>
+
+            <h3>
+                Prevent Incidents
+            </h3>
+
+            <p>
+                Turn safety insights into preventive
+                actions and interventions.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 SIF Safety. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>
