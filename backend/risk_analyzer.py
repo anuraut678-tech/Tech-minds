@@ -1,3 +1,16 @@
+SIF_SCORES = {
+    "I": 20,
+    "II": 40,
+    "III": 60,
+    "IV": 80,
+    "V": 100
+}
+
+
+def sif_to_score(sif_potential):
+    return SIF_SCORES.get(str(sif_potential).upper(), 0)
+
+
 def get_risk_level(score):
 
     if score >= 80:
@@ -12,7 +25,7 @@ def get_risk_level(score):
     return "LOW"
 
 
-def get_recommendation(hazard, failed_barriers):
+def get_recommendation(hazard, failed_barrier):
 
     recommendations = {
 
@@ -40,22 +53,24 @@ def get_recommendation(hazard, failed_barriers):
         "Review the hazard and strengthen the required safety barriers."
     )
 
-    if failed_barriers:
-
-        action += " Priority barrier checks: " + ", ".join(failed_barriers) + "."
+    if failed_barrier and failed_barrier != "Unknown":
+        action += " Priority barrier check: " + str(failed_barrier) + "."
 
     return action
 
 
 def generate_risk_result(analysis):
 
-    score = analysis["sif_score"]
+    sif_potential = analysis.get("sif_potential", "I")
+
+    score = sif_to_score(sif_potential)
 
     return {
+        "sif_potential": sif_potential,
         "score": score,
         "risk_level": get_risk_level(score),
         "recommendation": get_recommendation(
-            analysis["hazard"],
-            analysis["failed_barriers"]
+            analysis.get("hazard", "Unknown"),
+            analysis.get("failed_barrier", "Unknown")
         )
     }

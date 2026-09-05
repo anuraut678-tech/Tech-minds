@@ -14,7 +14,7 @@ OSHA_FILE = os.path.join(
     BASE_DIR,
     "data",
     "osha",
-    "ITA_Case_Detail_Data_2025_through_3-15-2026.csv"
+    "osha_sample.csv"
 )
 
 
@@ -34,16 +34,10 @@ def load_industrial_data():
         return pd.DataFrame()
 
 
-def load_osha_data(limit=5000):
-    """
-    Reads only a sample of the large OSHA dataset.
-    This prevents the 400MB file from consuming too much memory.
-    """
-
+def load_osha_data():
     try:
         df = pd.read_csv(
             OSHA_FILE,
-            nrows=limit,
             low_memory=False
         )
 
@@ -65,11 +59,17 @@ def get_statistics():
 
     return {
         "total_reports": len(industrial),
+
         "high_potential": int(
-            (industrial["Potential_Accident_Level"].astype(str) == "IV").sum()
+            industrial["Potential_Accident_Level"]
+            .astype(str)
+            .isin(["IV", "V"])
+            .sum()
         ) if "Potential_Accident_Level" in industrial.columns else 0,
 
-        "industries": industrial["Industry_Sector"].value_counts().to_dict()
+        "industries": industrial["Industry_Sector"]
+        .value_counts()
+        .to_dict()
         if "Industry_Sector" in industrial.columns else {}
     }
 
@@ -85,3 +85,7 @@ if __name__ == "__main__":
 
     print("\nFirst 5 records:")
     print(df.head())
+
+    osha = load_osha_data()
+
+    print("\nOSHA Sample Records:", len(osha))
