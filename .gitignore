@@ -2,4 +2,6 @@
 __pycache__/
 *.pyc
 *.csv
+
 !data/osha/osha_sample.csv
+!data/industrial_safety/IHMStefanini_industrial_safety_and_health_database_with_accidents_description.csv
